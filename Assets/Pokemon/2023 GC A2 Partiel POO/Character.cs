@@ -27,6 +27,8 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// Type de base
         /// </summary>
         TYPE _baseType;
+        TYPE _baseType2;
+        public Equipment equipment;
 
         public Character(int baseHealth, int baseAttack, int baseDefense, int baseSpeed, TYPE baseType)
         {
@@ -35,6 +37,15 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
             _baseDefense = baseDefense;
             _baseSpeed = baseSpeed;
             _baseType = baseType;
+        }
+        public Character(int baseHealth, int baseAttack, int baseDefense, int baseSpeed, TYPE baseType, TYPE baseType2)
+        {
+            _baseHealth = baseHealth;
+            _baseAttack = baseAttack;
+            _baseDefense = baseDefense;
+            _baseSpeed = baseSpeed;
+            _baseType = baseType;
+            _baseType2 = baseType2;
         }
         /// <summary>
         /// HP actuel du personnage
@@ -48,7 +59,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         {
             get
             {
-                throw new NotImplementedException();
+                return _baseHealth + equipment.BonusHealth;
             }
         }
         /// <summary>
@@ -58,7 +69,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         {
             get
             {
-                throw new NotImplementedException();
+                return _baseAttack + equipment.BonusAttack;
             }
         }
         /// <summary>
@@ -68,7 +79,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         {
             get
             {
-                throw new NotImplementedException();
+                return _baseDefense + equipment.BonusDefense;
             }
         }
         /// <summary>
@@ -78,7 +89,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         {
             get
             {
-                throw new NotImplementedException();
+                return _baseSpeed + equipment.BonusSpeed;
             }
         }
         /// <summary>
@@ -90,8 +101,8 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// </summary>
         public StatusEffect CurrentStatus { get; private set; }
 
-        public bool IsAlive => throw new NotImplementedException();
-
+        //public bool IsAlive => throw new NotImplementedException();
+        public bool IsAlive => CurrentHealth > 0;
 
         /// <summary>
         /// Application d'un skill contre le personnage
@@ -102,7 +113,8 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// <exception cref="NotImplementedException"></exception>
         public void ReceiveAttack(Skill s)
         {
-            throw new NotImplementedException();
+            int damage = Math.Max(1, s.Power - Defense);//Toujours au moins 1 pv d'infligé dans Pokémon sauf si un type d'attaque est dites inéficace sur un type de Pokémon Exemple Dragon sur Fée
+            CurrentHealth = Math.Max(CurrentHealth - damage,0);
         }
         /// <summary>
         /// Equipe un objet au personnage
@@ -111,14 +123,14 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// <exception cref="ArgumentNullException">Si equipement est null</exception>
         public void Equip(Equipment newEquipment)
         {
-            throw new NotImplementedException();
+            equipment = newEquipment;
         }
         /// <summary>
         /// Desequipe l'objet en cours au personnage
         /// </summary>
         public void Unequip()
         {
-            throw new NotImplementedException();
+            equipment = null;
         }
 
     }

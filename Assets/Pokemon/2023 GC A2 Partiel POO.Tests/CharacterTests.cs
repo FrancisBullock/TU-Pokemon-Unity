@@ -72,7 +72,7 @@ namespace _2023_GC_A2_Partiel_POO.Tests.Level_2
         [Test]
         public void CharacterReceivePunch()
         {
-            var pikachu = new Character(100, 50, 30, 20, TYPE.NORMAL);
+            var pikachu = new Character(100, 50, 30, 20, TYPE.NORMAL,TYPE.NONE);
             var punch = new Punch();
             var oldHealth = pikachu.CurrentHealth;
 
@@ -95,7 +95,7 @@ namespace _2023_GC_A2_Partiel_POO.Tests.Level_2
         [Test]
         public void CharacterEquippedReceivePunch()
         {
-            var pikachu = new Character(100, 50, 30, 20, TYPE.NORMAL);
+            var pikachu = new Character(100, 50, 30, 20, TYPE.NORMAL,TYPE.NONE);
             var shield = new Equipment(0, 0, 10, 0);
             pikachu.Equip(shield);
 
@@ -183,6 +183,13 @@ namespace _2023_GC_A2_Partiel_POO.Tests.Level_2
             Assert.That(mewtwo.CurrentHealth, Is.EqualTo(mewtwo.MaxHealth));
             Assert.That(f.IsFightFinished, Is.EqualTo(true));
         }
+        /*[Test]
+        public void CarapuceVsGoupix()
+        {
+            Character Carapuce = new Character(100, 50, 30, 20, TYPE.WATER);
+            Character Goupix = new Character(100, 50, 30, 40, TYPE.FIRE);
+
+        }//*/
 
     }
 }

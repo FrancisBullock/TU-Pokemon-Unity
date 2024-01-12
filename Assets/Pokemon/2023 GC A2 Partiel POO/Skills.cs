@@ -44,6 +44,13 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
     /// </summary>
     public class MagicalGrass : Skill
     {
-        public MagicalGrass() : base(TYPE.GRASS, 70, StatusPotential.SLEEP) { }
-    }
+        public MagicalGrass() : base(TYPE.GRASS, 70, StatusPotential.SLEEP,25) {
+            Random rand=new Random();
+            int a = rand.Next(0, 100);
+            if(a<Haxx)
+            {
+                //Apliquer l'élément
+            }
+        }
+    }       
 }
